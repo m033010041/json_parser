@@ -1,0 +1,20 @@
+bssid / frequency / signal level / flags / ssid
+78:44:76:dd:9d:64       2462    -55     [WPA-PSK-CCMP][WPA2-PSK-CCMP][WPS][ESS] TOTOLINK N300RA
+78:44:76:dd:9d:65       2462    -57     [WPA-PSK-CCMP][WPA2-PSK-CCMP][ESS]      weintek_os
+80:1f:02:78:c6:32       2462    -52     [WPA2-PSK-CCMP][WPS][ESS]       coldnew EDIMAX4
+10:6f:3f:4c:b7:24       2412    -70     [WPA2-PSK-CCMP][WPS][ESS]       BUFFALO
+00:1d:aa:81:85:79       2437    -72     [WPA2-PSK-CCMP][ESS]    weintek_net
+34:97:f6:41:2d:90       2422    -75     [WPA2-PSK-CCMP][WPS][ESS]       APP_Test
+00:22:15:16:e0:d7       2412    -76     [WPA2-PSK-CCMP][ESS]    MT8000
+00:1d:aa:81:85:78       2437    -72     [WEP][ESS]      local
+00:1d:aa:81:85:7b       2437    -73     [WEP][ESS]      3-2
+00:26:5a:40:c7:e6       2462    -33     [WPS][ESS]      D-LINK 300
+c4:8e:8f:b9:27:e3       2437    -77     [ESS][P2P]      HP-Print-E3-LaserJet 1025
+38:d5:47:74:af:30       2447    -69     [WPA2-PSK-CCMP][WPS][ESS]       Weintek-SW-APP
+7c:c3:a1:a9:25:c7       2462    -66     [WPA2-PSK-CCMP][ESS]    Jian\xe2\x80\x99s iMac
+7a:24:af:58:01:d2       2412    -80     [WEP]   DIRECT-
+54:04:a6:5b:ec:e0       2437    -79     [WPA2-PSK-CCMP][WPS][ESS]       Weintek-SW-APP-Replica
+70:4d:7b:5b:cc:80       2412    -90     [WPA2-PSK-CCMP][WPS][ESS]       HOI
+14:cc:20:58:42:64       2427    -84     [WPA2-PSK-CCMP][ESS]
+c0:a0:bb:26:ae:d0       2412    -89     [ESS]   SYMAP_DMS
+30:8d:99:ec:3e:bc       2452    -91     [WPA2-PSK-CCMP][ESS]    HP-Print-BC-Officejet 4630
