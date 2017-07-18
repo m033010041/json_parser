@@ -20,22 +20,62 @@
 using boost::property_tree::ptree;
 
 static std::ostringstream outbuf;
-
+static std::ifstream scan_data;
 std::string outstr;
 std::string strbuf;
+
+
+struct wifi_info {
+    std::string bssid;
+    int frequency;
+    int signal_level;
+    std::string security;
+    std::string ssid;
+};
+
 int main()
 {
     ptree pt;
+    ptree bssid;    //create bssid object
+    ptree node;     //bssid node
+    std::string unused, line;
+
+    scan_data.open("wifi_scan_result.txt");
+
+    std::getline(scan_data, unused);  // get first line(unused)
+
+    std::getline(scan_data, line);
+
+    if(!line.empty())
+    {
+        std::istringstream iss(line);
+        parse_wifi_info(iss, wifi_info)
+    }
+
     outbuf.clear();
 
-    pt.put("ssid", "D-LINK 300");
-    pt.put("signal level", "-48");
-    pt.put("security", "WPA-PSK-CCMP+TKIP");
+
+    node.put("ssid", "D-LINK 300");
+    node.put("signal level", "-48");
+    node.put("security", "WPA-PSK-CCMP+TKIP");
+
+    //add_child("node_name", ptree);
+    pt.add_child("00:0c:26:11:22:23", node);
+
+    node.put("ssid", "coldnew EDIMAX4");
+    node.put("signal level", "-50");
+    node.put("security", "WPA-PSK2-CCMP+TKIP");
+
+    //add_child("node_name", ptree);
+    pt.add_child("00:0c:26:77:88:99", node);
+
+
 
     write_json(outbuf, pt, false);
 
     outstr.clear();
     strbuf.clear();
+
 
     strbuf = outbuf.str();
 
