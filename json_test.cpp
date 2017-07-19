@@ -36,41 +36,53 @@ struct wifi_info {
 int main()
 {
     ptree pt;
-    ptree bssid;    //create bssid object
-    ptree node;     //bssid node
+    ptree node;     //pt child node
     std::string unused, line;
+    struct wifi_info winfo;
 
-    scan_data.open("wifi_scan_result.txt");
+    scan_data.open("wifiscanresult.txt");
 
-    std::getline(scan_data, unused);  // get first line(unused)
+    if(!scan_data.eof())
+        std::getline(scan_data, unused);  // get first line(unused)
+    else
+        return 0;
 
-    std::getline(scan_data, line);
 
-    if(!line.empty())
-    {
-        std::istringstream iss(line);
-        parse_wifi_info(iss, wifi_info)
+    while(std::getline(scan_data, line)){
+        if(!scan_data.eof())
+        {
+            std::cout << line << std::endl;
+            std::istringstream iss(line);
+
+            iss >> winfo.bssid;
+            iss >> winfo.frequency;
+            iss >> winfo.signal_level;
+            iss >> winfo.security;
+
+            /* get ssid (include 0x20 character) */
+
+            while((iss >> unused))
+            {
+                winfo.ssid.append(unused);
+                winfo.ssid.append(" ");
+            }
+
+            if(winfo.ssid.size() > 0)
+                winfo.ssid.erase(winfo.ssid.size()-1);
+
+
+            node.put("frequency", winfo.frequency);
+            node.put("signal level", winfo.signal_level);
+            node.put("security", winfo.security);
+            node.put("ssid", winfo.ssid);
+            pt.add_child(winfo.bssid.c_str(), node);
+
+            /* clean string */
+            winfo.ssid.clear();
+        }
     }
 
     outbuf.clear();
-
-
-    node.put("ssid", "D-LINK 300");
-    node.put("signal level", "-48");
-    node.put("security", "WPA-PSK-CCMP+TKIP");
-
-    //add_child("node_name", ptree);
-    pt.add_child("00:0c:26:11:22:23", node);
-
-    node.put("ssid", "coldnew EDIMAX4");
-    node.put("signal level", "-50");
-    node.put("security", "WPA-PSK2-CCMP+TKIP");
-
-    //add_child("node_name", ptree);
-    pt.add_child("00:0c:26:77:88:99", node);
-
-
-
     write_json(outbuf, pt, false);
 
     outstr.clear();
