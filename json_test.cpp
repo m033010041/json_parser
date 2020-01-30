@@ -8,8 +8,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-//#include <weintek/weintek-hal-wrapper.h>
-//#include <weintek/machine.h>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/foreach.hpp>
